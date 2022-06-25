@@ -1,0 +1,30 @@
+name: Publish serpapi4j package to GitHub Packages
+on:
+  release:
+    types: [created]
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      SERPAPI_KEY: ${{ secrets.SERPAPI_SECRET_KEY }}
+    strategy:
+      fail-fast: false
+      matrix:
+        # jdk: [14, 15, 16] # needs more work to package jar per jdk version
+        jdk: [ 16 ]
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout this repo
+        uses: actions/checkout@v3
+      - name: Setup JDK version ${{ matrix.jdk }}
+        uses: actions/setup-java@v3.4.0
+        with:
+          java-version: ${{ matrix.jdk }}
+          distribution: 'adopt'
+          cache: 'maven'
+      - name: Publish package with Maven for JDK version ${{ matrix.jdk }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: mvn --batch-mode deploy

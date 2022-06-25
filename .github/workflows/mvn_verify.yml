@@ -1,0 +1,23 @@
+name: serpapi4j CI
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # jdk: [14, 15, 16] # needs more work to package jar per jdk version
+        jdk: [16]
+    steps:
+      - name: Checkout this repo
+        uses: actions/checkout@v3
+      - name: Setup JDK version ${{ matrix.jdk }}
+        uses: actions/setup-java@v3.4.0
+        with:
+          java-version: ${{ matrix.jdk }}
+          distribution: 'adopt'
+          cache: 'maven'
+      - name: Build with Maven for JDK version ${{ matrix.jdk }}
+        env:
+          SERPAPI_KEY: ${{ secrets.SERPAPI_SECRET_KEY }}
+        run: mvn --batch-mode --update-snapshots verify
