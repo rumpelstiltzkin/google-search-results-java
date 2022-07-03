@@ -1,7 +1,7 @@
 serpapi4j - the Java API to access SerpApi services
 ===
 
-![test](https://github.com/serpapi/google-search-results-java/workflows/test/badge.svg)
+![test](https://github.com/rumpelstiltzkin/serpapi4j/actions/workflows/mvn_build_package.yml/badge.svg)
 
 This Java package enables the scraping and parsing of search results using [SerpApi](https://serpapi.com) from various
 search providers like Google, Bing, Baidu, etc. Feel free to fork this repository to add more backends.
@@ -16,9 +16,9 @@ blocks the thread until the results are available.
 
 For an example usage either see the demo app, which uses the `ParamsBasedSearch`
 class, at:
-`src/main/java/com/serpapi/demo/App.java`
+`src/main/java/com/anandganesh/code/serpapi4j/demo/App.java`
 or see the unit test, which uses the SerpApiSyncClient directly, at:
-`src/test/java/com/serpapi/query/search/SearchParamsTest.java`
+`src/test/java/com/anandganesh/code/serpapi4j/query/search/SearchParamsTest.java`
 
 For understanding how to use `SerpApiAsyncClient`, see the implementation of `SerpApiSyncClient`.
 The APIs in `SerpApiAsyncClient/SerpApiSyncClient` are fairly self-explanatory.
@@ -44,7 +44,7 @@ SERPAPI_KEY="<your private serpapi key>" mvn clean install
 ```
 Note: You need an account with SerpApi to obtain this private key from: https://serpapi.com/dashboard
 
-file: `src/main/java/com/serpapi/demo/App.java`
+file: `src/main/java/com/anandganesh/code/serpapi4j/demo/App.java`
 ```java
 public class App {
     public static void main(String[] args) throws SerpApiException {
@@ -200,6 +200,9 @@ None
 
 Changelog
 ---
+- 2.0.6-SNAPSHOT Migrated package from com.serpapi to com.anandganesh.code.serpapi4j
+- 2.0.5-SNAPSHOT Migrated groupId from com.serpapi to com.anandganesh.code
+- 2.0.4-SNAPSHOT Bumped to diverge from an existing 2.0.3 version in the main repo
 - 2.0.3-SNAPSHOT Updated this README to be more correct
 - 2.0.2-SNAPSHOT serpapi4j
 - 2.0.1 update gradle 6.7.1 

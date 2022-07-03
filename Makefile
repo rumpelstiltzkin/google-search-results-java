@@ -21,4 +21,4 @@ release: build
 	@echo "drag drop file"
 	open build/libs/
 	open build/distributions/
-	open -a "Google Chrome" https://github.com/serpapi/google-search-results-java/releases
+	open -a "Google Chrome" https://github.com/rumpelstiltzkin/serpapi4j/releases
